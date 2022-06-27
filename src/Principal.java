@@ -8,68 +8,105 @@ public class Principal {
 		opcao = ent.nextInt();
 		return opcao;
 	}
+
 	public static void main(String[] args) {
-		Gerente gerente = new Gerente();
-		Vendedor vendedor = new Vendedor();
-		Atendente atendente = new Atendente();
 		Scanner ent = new Scanner(System.in);
 		int opcao;
 		do {
 			opcao = menuPrincipal();
-			switch(opcao) {
-			case 1:
+			switch (opcao) {
+			case 1: {
+				int opcaoDentro;
 				do {
-					System.out.println("1 – Cadastrar funcionário\n2 – Calcular salário\nCalcular bonificação\n4- 0 – Sair");
-					int opcaoDentro= ent.nextInt();
-					switch(opcaoDentro) {
+					Gerente gerente = new Gerente();
+					System.out.println("1 – Cadastrar funcionário\n2 – Calcular salário\n4 - Calcular bonificação\n0 – Sair");
+					opcaoDentro = ent.nextInt();
+					switch (opcaoDentro) {
 					case 1:
-						String nome = ent.nextLine();
-						String cpf = ent.nextLine();
+						System.out.print("Nome: ");
+						String nome = ent.next();
+						System.out.print("CPF: ");
+						String cpf = ent.next();
 						double salarioBase = ent.nextDouble();
 						gerente.cadastrarFuncionario(nome, cpf, salarioBase);
 						break;
+					case 2:
+						System.out.print("Gratificação: ");
+						double gratificacao = ent.nextDouble();
+						gerente.calcularSalarioFinal(gratificacao);
+						break;
+					case 3:
+						gerente.calcularBonificacao();
+						break;
+					case 0:
+						break;
+					default:
+						System.out.println("Opção inválida!");
 					}
-				} while (opcao != 0);
+				} while (opcaoDentro != 0);
 				break;
-			case 2:
+			}
+			case 2: {
+				int opcaoDentro;
 				do {
-					System.out.println("1 – Cadastrar funcionário\n2 – Calcular salário\nCalcular bonificação\n4- 0 – Sair");
-					int opcaoDentro= ent.nextInt();
-					switch(opcaoDentro) {
+					Vendedor vendedor = new Vendedor();
+					System.out.println("1 – Cadastrar funcionário\n2 – Calcular salário\n4 - Calcular bonificação\n0 – Sair");
+					opcaoDentro = ent.nextInt();
+					switch (opcaoDentro) {
 					case 1:
-						String nome = ent.nextLine();
-						String cpf = ent.nextLine();
+						System.out.print("Nome: ");
+						String nome = ent.next();
+						System.out.print("CPF: ");
+						String cpf = ent.next();
 						double salarioBase = ent.nextDouble();
-						gerente.cadastrarFuncionario(nome, cpf, salarioBase);
+						vendedor.cadastrarFuncionario(nome, cpf, salarioBase);
 						break;
-					} while (opcao != 0);
+					case 2:
+						System.out.print("Gratificação: ");
+						double gratificacao = ent.nextDouble();
+						vendedor.calcularSalarioFinal(gratificacao);
+						break;
+					case 3:
+						vendedor.calcularBonificacao();
+						break;
+					case 0:
+						continue;
+					default:
+						System.out.println("Opção inválida!");
+					}
+				} while (opcaoDentro != 0);
 				break;
-			case 3:
+			}
+			case 3: {
+				int opcaoDentro;
 				do {
-					System.out.println("1 – Cadastrar funcionário\n2 – Calcular salário\nCalcular bonificação\n4- 0 – Sair");
-					int opcaoDentro= ent.nextInt();
-					switch(opcaoDentro) {
+					Atendente atendente = new Atendente();
+					System.out.println("1 – Cadastrar funcionário\n2 – Calcular salário\n4 - Calcular bonificação\n0 – Sair");
+					opcaoDentro = ent.nextInt();
+					switch (opcaoDentro) {
 					case 1:
+						System.out.print("Nome: ");
 						String nome = ent.nextLine();
+						System.out.print("CPF: ");
 						String cpf = ent.nextLine();
 						double salarioBase = ent.nextDouble();
-						gerente.cadastrarFuncionario(nome, cpf, salarioBase);
+						atendente.cadastrarFuncionario(nome, cpf, salarioBase);
 						break;
-					} while (opcao != 0);
-				} while (opcao != 0);
-			case 4:
-				do {
-					System.out.println("1 – Cadastrar funcionário\n2 – Calcular salário\nCalcular bonificação\n4- 0 – Sair");
-					int opcaoDentro= ent.nextInt();
-					switch(opcaoDentro) {
-					case 1:
-						String nome = ent.nextLine();
-						String cpf = ent.nextLine();
-						double salarioBase = ent.nextDouble();
-						gerente.cadastrarFuncionario(nome, cpf, salarioBase);
+					case 2:
+						System.out.print("Gratificação: ");
+						double gratificacao = ent.nextDouble();
+						atendente.calcularSalarioFinal(gratificacao);
 						break;
+					case 3:
+						atendente.calcularBonificacao();
+						break;
+					case 0:
+						continue;
+					default:
+						System.out.println("Opção inválida!");
 					} while (opcao != 0);
-				} while (opcao != 0);
+				} while (opcaoDentro != 0);
+			}
 			}
 		} while (opcao != 0);
 	}

@@ -5,7 +5,9 @@ public abstract class Funcionario {
 	private double salarioBase;
 	private double salarioFinal;
 	private double valorBonificacao;
-	public void calcularBonificacao(){}
+	public void calcularBonificacao(){
+		valorBonificacao = 0.05 * this.valorBonificacao;
+	};
 	public void cadastrarFuncionario(String nome, String cpf, double salarioBase){
 		this.nome = nome;
 		this.cpf = cpf;
